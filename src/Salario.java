@@ -1,19 +1,18 @@
-public class Poupanca extends Contas {
-  private
-    float vlrLimeteDia = 300;
-    float vlrTotalSaqueDia = 0;
+public class Salario extends Poupanca {
+  private int limiteDepositosMes = 1;
+  private int totalDepositosRealizados = 0;
 
-  public boolean aindaPodeSacar(float vlrSaque) {
-    return (vlrSaque + vlrTotalSaqueDia <= vlrLimeteDia);
+  protected boolean aindaPodeDepositar() {
+    return (totalDepositosRealizados <= limiteDepositosMes);
   }
 
-  public boolean Sacar(float Quanto) {
-   if (aindaPodeSacar(Quanto) = true) {
-    super.Sacar(Quanto)
-    vlrTotalSaqueDia += Quanto;
+  public boolean Depositar(float Quanto) {
+   if (aindaPodeDepositar()) {
+    super.Depositar(Quanto);
+    totalDepositosRealizados++;
     return true;
    } else {
-      System.out.println(" Limite de saque por dia excedido!");
+      System.out.println(" Limite de depositos por mês excedido!");
       return false;
    }
   }
